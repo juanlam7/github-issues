@@ -1,7 +1,8 @@
+import { environment } from '@environments/environment.development';
 import { GitHubIssue, State } from '../interfaces/github-issue.interface';
 
-const BASE_URL = 'GITHUB_API';
-const GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN';
+const BASE_URL = environment.baseUrl;
+const GITHUB_TOKEN = environment.gitHubToken;
 
 export const getIssues = async (
   state: State = State.All,

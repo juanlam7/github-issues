@@ -1,7 +1,8 @@
+import { environment } from '@environments/environment.development';
 import { GitHubLabel } from '../interfaces/github-label.interface';
 
-const BASE_URL = 'GITHUB_API';
-const GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN';
+const BASE_URL = environment.baseUrl;
+const GITHUB_TOKEN = environment.gitHubToken;
 
 export const getLabels = async (): Promise<GitHubLabel[]> => {
   try {
