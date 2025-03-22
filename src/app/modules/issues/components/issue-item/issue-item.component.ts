@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { GitHubIssue, State } from '../../interfaces/github-issue.interface';
+import { IssueService } from '../../services/issue.service';
 
 @Component({
   selector: 'issue-item',
@@ -10,8 +11,14 @@ import { GitHubIssue, State } from '../../interfaces/github-issue.interface';
 })
 export class IssueItemComponent {
   issue = input.required<GitHubIssue>();
+  issueService = inject(IssueService);
 
   get isOpen() {
     return this.issue().state === State.Open;
+  }
+
+  prefetchData() {
+    // this.issueService.prefetchIssue(this.issue().number.toString());
+    this.issueService.setIssueData(this.issue());
   }
 }

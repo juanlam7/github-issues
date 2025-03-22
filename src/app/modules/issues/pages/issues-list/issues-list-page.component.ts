@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { IssueItemComponent } from '../../components/issue-item/issue-item.component';
 import { LabelsSelectorComponent } from '../../components/labels-selector/labels-selector.component';
+import { State } from '../../interfaces/github-issue.interface';
 import { IssuesService } from '../../services/issues.service';
 
 @Component({
@@ -17,5 +18,16 @@ export default class IssuesListPageComponent {
 
   get issuesQuery() {
     return this.issuesService.issuesQuery;
+  }
+
+  onChangeState(newState: string) {
+    const state =
+      {
+        all: State.All,
+        open: State.Open,
+        closed: State.Closed,
+      }[newState] ?? State.All;
+
+    this.issuesService.showIssuesByState(state);
   }
 }

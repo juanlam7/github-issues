@@ -7,18 +7,21 @@
       <button
         [class.active]="issuesService.selectedState() === 'all'"
         class="btn"
+        (click)="onChangeState('all')"
       >
         All
       </button>
       <button
         [class.active]="issuesService.selectedState() === 'open'"
         class="btn"
+        (click)="onChangeState('open')"
       >
         Open
       </button>
       <button
         [class.active]="issuesService.selectedState() === 'closed'"
         class="btn"
+        (click)="onChangeState('closed')"
       >
         Closed
       </button>

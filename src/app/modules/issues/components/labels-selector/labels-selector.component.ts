@@ -31,6 +31,6 @@ export class LabelsSelectorComponent {
   }
 
   onToggleLabel(labelName: string) {
-    console.log(labelName);
+    this.issuesService.toggleLabel(labelName);
   }
 }

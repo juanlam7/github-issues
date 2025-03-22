@@ -26,4 +26,20 @@ export class IssuesService {
     ],
     queryFn: () => getIssues(this.selectedState(), [...this.selectedLabels()]),
   }));
+
+  showIssuesByState(state: State) {
+    this.selectedState.set(state);
+  }
+
+  toggleLabel(label: string) {
+    const labels = this.selectedLabels();
+
+    if (labels.has(label)) {
+      labels.delete(label);
+    } else {
+      labels.add(label);
+    }
+
+    this.selectedLabels.set(new Set(labels));
+  }
 }
